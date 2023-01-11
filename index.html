@@ -10,6 +10,57 @@
 </head>
 <body>
     <img src="pokemon-logo-black-transparent.png" alt="logo">
+
+    <div class="c-tri">
+        <form action="" method="get">
+            <div class="select type">
+                <label for="type">Type</label>
+                <select name="type" id="type">
+                    <option value="fire">Feu</option>
+                    <option value="water">Eau</option>
+                    <option value="grass">Plante</option>
+                    <option value="steel">Acier</option>
+                    <option value="dragon">Dragon</option>
+                    <option value="electrik">Electrique</option>
+                    <option value="ice">Glace</option>
+                    <option value="fly">Vol</option>
+                    <option value="shadow">Ombre</option>
+                    <option value="psy">Psy</option>
+                    <option value="insect">Insecte</option>
+                </select>
+            </div>
+            <div class="select generation">
+                <label for="generation">Génération</label>
+                <select name="generation" id="generation">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+            <div class="select evolution">
+                <label for="evolution">Génération</label>
+                <select name="evolution" id="evolution">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="select pokedex">
+                <label for="pokedex">Numéro du pokedex</label>
+                <select name="pokedex" id="pokedex">
+                    <option value="croissant">Croissant</option>
+                    <option value="decroissant">Décroissant</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
     <div id="poke_container" class="poke-container">
 
     </div>
@@ -21,7 +72,6 @@
     <form action="">
         <input type="text" defalutvalue="10">
     </form>
-   
 
     <script src="script.js"></script>
 </body>
