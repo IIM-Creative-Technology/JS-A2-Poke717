@@ -177,6 +177,7 @@ h1{
     width: 100%;
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 
 .logo{
@@ -208,4 +209,16 @@ h1{
     outline: none;
     
     box-shadow: 0  2px 15px rgba(100, 100, 100, 0.5);
+}
+
+.c-tri form input{
+    border: none;
+    outline: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: aquamarine;
+    box-shadow: 0  2px 15px rgba(100, 100, 100, 0.5);
+    cursor: pointer;
 }
