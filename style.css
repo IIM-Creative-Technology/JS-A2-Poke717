@@ -1,3 +1,5 @@
+@import 'components_css/single_poke.css';
+@import 'components_css/types.css';
 *{
     box-sizing: border-box;
 }

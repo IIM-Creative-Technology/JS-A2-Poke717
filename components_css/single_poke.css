@@ -1,0 +1,28 @@
+main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+}
+
+.single_poke{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.single_poke .single_info{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+.img_single_pokemon{
+    width: 40%;
+    height: 100%;
+}
+
+.img_single_pokemon img{
+    width: 100%;
+    height: 100%;
+}
