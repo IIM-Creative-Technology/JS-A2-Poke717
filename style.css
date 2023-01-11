@@ -1,5 +1,7 @@
 @import 'components_css/single_poke.css';
 @import 'components_css/types.css';
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 *{
     box-sizing: border-box;
 }
@@ -12,7 +14,7 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Rubik';
 }
 
 h1{
@@ -159,10 +161,11 @@ h1{
 .pokemon .name{
     margin: 15px 0 7px;
     letter-spacing: 1px;
+    text-transform: capitalize;
 }
 
 .shy{
-    visibility: hidden;
+    display: none;
 }
 
 .c-tri{
@@ -177,7 +180,7 @@ h1{
     width: 100%;
     display: flex;
     gap: 1rem;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .c-tri form .select{
