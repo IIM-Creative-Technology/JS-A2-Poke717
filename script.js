@@ -121,5 +121,12 @@ document.addEventListener("keydown", function(event) {
   }
 })
 
-
+document.addEventListener("keydown", function(event) {
+  if (event.key === "a") {
+    
+    getPokemon(Math.floor(Math.random() * 1000));
+    
+  
+  }
+})
 
