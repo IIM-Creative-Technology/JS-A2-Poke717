@@ -10,6 +10,7 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0;
+    font-family: sans-serif;
 }
 
 h1{
@@ -71,6 +72,34 @@ h1{
     visibility: hidden;
 }
 
+.c-tri{
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 32px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.c-tri form{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
 
+.c-tri form .select{
+    display: flex;
+    flex-direction: column;
+}
 
+.c-tri form .select label{
+    padding-bottom: 1rem;
+}
 
+.c-tri form .select select{
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    
+    box-shadow: 0  2px 15px rgba(100, 100, 100, 0.5);
+}
