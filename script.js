@@ -30,6 +30,7 @@ const createPokemonCard = (pokemon) => {
   pokemonEL.classList.add('pokemon');
   const { id, name, sprites, types } = pokemon;  // on defini la constante pokemon
   const type = types[0].type.name;
+  //const fire = types[0].type.name("fire");
   // cretion d'un élement html qui va etre modifier et génerer par le js 
   const pokeInnerHTML = ` 
     <div id="pok">
@@ -52,6 +53,14 @@ const createPokemonCard = (pokemon) => {
 
   pokemonEL.innerHTML = pokeInnerHTML;
   poke_container.appendChild(pokemonEL);
+  /*
+   if (type === fire) {
+    var element = document.getElementById("pok");
+    element.classList.add();
+  } 
+  */
+ 
+
 }
 
 const createPokemonCardShy = (pokemon) => {
@@ -59,6 +68,7 @@ const createPokemonCardShy = (pokemon) => {
   pokemonEL.classList.add('pokemon');
   const { id, name, sprites, types } = pokemon;  // on defini la constante pokemon
   const type = types[0].type.name;
+  
   // cretion d'un élement html qui va etre modifier et génerer par le js 
   const pokeInnerHTML = ` 
     <div id="pok">
@@ -134,3 +144,6 @@ document.addEventListener("keydown", function(event) {
   
   }
 })
+
+
+
