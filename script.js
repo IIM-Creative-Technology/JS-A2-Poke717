@@ -1,6 +1,7 @@
 const poke_container = document.getElementById('poke_container');
 const poke_container1 = document.getElementById('poke_container1');
-const pokemons_number = 10; // fixe le nombre de pokemon maximun a afficher
+const pokemons_number = 10;
+const pokemons_first = 151; // fixe le nombre de pokemon maximun a afficher
 // permet de faire une itération pour que les pokemon soit afficher de 1 jusqu'au nombre choisi
 const fetchPokemons = async () => {
   for (let i = 1; i <= pokemons_number; i++) {
@@ -8,17 +9,7 @@ const fetchPokemons = async () => {
   }
 };
 
-document.addEventListener('keyup', event => {
-  if (event.code === 'Space') {
-    
-    const fetchPokemons = async () => {
-      for (let i = 1; i <= pokemons_number; i++) {
-        await getPokemon(i);
-      }
-    };
-  
-  }
-});
+
 
 const getPokemon = async id => { // async sert faire charger plusieur chose en meme temps 
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -125,3 +116,21 @@ document.addEventListener('keyup', event => {
 })
 
 
+
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "q") {
+    
+    const fetchPokemons = async () => {
+      for (let i = 1; i <= pokemons_first; i++) {
+        await getPokemon(i);
+        console.log("first");
+      }
+    };
+    console.log("jjj")
+
+    fetchPokemons();
+    
+  
+  }
+})
