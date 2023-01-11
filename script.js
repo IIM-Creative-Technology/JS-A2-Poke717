@@ -9,84 +9,60 @@ const fetchPokemons = async () => {
   }
 };
 
-
-
 const getPokemon = async id => { // async sert faire charger plusieur chose en meme temps 
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
   const pokemon = await res.json();
   createPokemonCard(pokemon); // apelle la fonction qui va crée les différante cart pokemon 
   createPokemonCardShy(pokemon);
-  
-
 }
-
-
-
 
 // creation de carte pokemon
 const createPokemonCard = (pokemon) => {
   const pokemonEL = document.createElement('div'); // creation de div cette div va etre notre card 
-  pokemonEL.classList.add('pokemon');
+  pokemonEL.setAttribute('id','pokemon');
   const { id, name, sprites, types } = pokemon;  // on defini la constante pokemon
   const type = types[0].type.name;
-  //const fire = types[0].type.name("fire");
+
   // cretion d'un élement html qui va etre modifier et génerer par le js 
   const pokeInnerHTML = ` 
-    <div id="pok">
-    <div class="img-container">
-    <img src="${sprites. front_default}" alt="${name}"/>
-  </div
-  <div class="info">
-    <span class="number">
-    ${id}
-    </span>
-    <h3 class="name">
-    ${name}
-    </h3>
-    <small class="type">
-    Type: <span>${type}</span>
-    </small>
+    <div id="pok" class="hover-${type} pokemon">
+      <div class="img-container">
+        <img src="${sprites. front_default}" alt="${name}"/>
+      </div
+      <div class="info">
+        <span class="number">${id}</span>
+        <h3 class="name">${name}</h3>
+        <small class="type">Type: <span>${type}</span></small>
+      </div>
     </div>
-    </div>
-  `
+    `
 
   pokemonEL.innerHTML = pokeInnerHTML;
   poke_container.appendChild(pokemonEL);
-  /*
-   if (type === fire) {
-    var element = document.getElementById("pok");
-    element.classList.add();
-  } 
-  */
- 
-
 }
+
+
+
 
 const createPokemonCardShy = (pokemon) => {
   const pokemonEL = document.createElement('div'); // creation de div cette div va etre notre card 
-  pokemonEL.classList.add('pokemon');
+  pokemonEL.setAttribute('id','pokemon');
   const { id, name, sprites, types } = pokemon;  // on defini la constante pokemon
   const type = types[0].type.name;
   
   // cretion d'un élement html qui va etre modifier et génerer par le js 
   const pokeInnerHTML = ` 
-    <div id="pok">
+  <div id="pok" class="hover-${type} pokemon">
     <div class="img-container">
-    <img src="${sprites. front_shiny}" alt="${name}"/>
-  </div
-  <div class="info">
-    <span class="number">
-    ${id}
-    </span>
-    <h3 class="name">
-    ${name}
-    </h3>
-    <small class="type">
-    Type: <span>${type}</span>
-    </small>
+      <img src="${sprites. front_shiny}" alt="${name}"/>
+    </div
+    <div class="info">
+      <span class="number">${id}</span>
+      <h3 class="name">${name}</h3>
+      <small class="type">Type: <span>${type}</span></small>
     </div>
-    </div>
+  </div>
   `
 
   pokemonEL.innerHTML = pokeInnerHTML;

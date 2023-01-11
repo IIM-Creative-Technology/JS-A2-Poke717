@@ -27,11 +27,106 @@ h1{
 .pokemon{
     background-color: #eee;
     border-radius:20px ;
-    box-shadow: 0 5px 15px rgba(100, 100, 100, 0.5);
+    box-shadow: 0 0px 15px rgba(100, 100, 100, 0.5);
     margin: 10px;
     padding: 20px;
     text-align: center;
+    transition: 0.4s ease-in-out;
+}
 
+.hover-grass:hover{
+    background-color: #78c850;
+    box-shadow: 0 0 15px #78c850;
+}
+
+.hover-fire:hover{
+    background-color: #f08030;
+    box-shadow: 0 0 15px #f08030;
+}
+
+.hover-normal:hover{
+    background-color: #a8a878;
+    box-shadow: 0 0 15px #a8a878;
+}
+
+.hover-fighting:hover{
+    background-color: #c03028;
+    box-shadow: 0 0 15px #c03028;
+}
+
+.hover-water:hover{
+    background-color: #6890f0;
+    box-shadow: 0 0 15px #6890f0;
+}
+
+.hover-flying:hover{
+    background-color: #a890f0;
+    box-shadow: 0 0 15px #a890f0;
+}
+
+.hover-poison:hover{
+    background-color: #a040a0;
+    box-shadow: 0 0 15px #a040a0;
+}
+
+.hover-electric:hover{
+    background-color: #f8d030;
+    box-shadow: 0 0 15px #f8d030;
+}
+
+.hover-ground:hover{
+    background-color: #e0c068;
+    box-shadow: 0 0 15px #e0c068;
+}
+
+.hover-psychic:hover{
+    background-color: #f85888;
+    box-shadow: 0 0 15px #f85888;
+}
+
+.hover-rock:hover{
+    background-color: #b8a038;
+    box-shadow: 0 0 15px #b8a038;
+}
+
+.hover-ice:hover{
+    background-color: #98d8d8;
+    box-shadow: 0 0 15px #98d8d8;
+}
+
+.hover-bug:hover{
+    background-color: #a8b820;
+    box-shadow: 0 0 15px #a8b820;
+}
+
+.hover-dragon:hover{
+    background-color: #7038f8;
+    box-shadow: 0 0 15px #7038f8;
+}
+
+.hover-ghost:hover{
+    background-color: #705898;
+    box-shadow: 0 0 15px #705898;
+}
+
+.hover-dark:hover{
+    background-color: #705848;
+    box-shadow: 0 0 15px #705848;
+}
+
+.hover-steel:hover{
+    background-color: #b8b8d0;
+    box-shadow: 0 0 15px #b8b8d0;
+}
+
+.hover-fairy:hover{
+    background-color: #ee99ac;
+    box-shadow: 0 0 15px #ee99ac;
+}
+
+.hover-unknown:hover{
+    background-color: #68a090;
+    box-shadow: 0 0 15px #68a090;
 }
 
 .pokemon .img-container {
@@ -40,8 +135,6 @@ h1{
     width: 120px;
     height: 120px;
     text-align: center;
-
-
 }
 
 .pokemon .img-container img{
@@ -51,9 +144,7 @@ h1{
 
 .pokemon .info{
     margin-top: 20px;
-
 }
-
 
 .pokemon .number{
     background-color: rgba(0, 0, 0, 0.1);
@@ -71,6 +162,20 @@ h1{
     visibility: hidden;
 }
 
+.logo_link{
+    text-align: center;
+}
 
+.logo{
+    animation: logoanim 0.9s ease-in-out;
+    width: 25%;
+}
 
-
+@keyframes logoanim {
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 25%;
+    }
+}
