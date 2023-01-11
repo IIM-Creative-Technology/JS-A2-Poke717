@@ -8,6 +8,18 @@ const fetchPokemons = async () => {
   }
 };
 
+document.addEventListener('keyup', event => {
+  if (event.code === 'Space') {
+    
+    const fetchPokemons = async () => {
+      for (let i = 1; i <= pokemons_number; i++) {
+        await getPokemon(i);
+      }
+    };
+  
+  }
+});
+
 const getPokemon = async id => { // async sert faire charger plusieur chose en meme temps 
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
