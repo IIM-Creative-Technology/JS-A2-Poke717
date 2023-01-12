@@ -4,10 +4,11 @@ main{
     width: 100%;
     height: 500px;
 }
-
+.logo_single{
+    width: 25%;
+}
 .single_poke{
     display: flex;
-    justify-content: space-between;
     width: 80%;
 }
 
@@ -15,6 +16,15 @@ main{
     width: 55%;
     display: flex;
     flex-direction: column;
+    padding: 50px;
+    border-radius: 12px;
+    background-color: #eee;
+}
+.single_poke .single_info h2{
+    font-size: 30px;
+}
+.single_poke .single_info p{
+    font-size: 20px;
 }
 
 .img_single_pokemon{
@@ -25,4 +35,49 @@ main{
 .img_single_pokemon img{
     width: 100%;
     height: 100%;
+}
+
+
+.evolution{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.box-evolution{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+.les_evolutions{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.attack{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    width: 80%;
+}
+
+.attack button{
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+
+}
+
+.statistique{
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+}
+
+
+.flame-cursor{
+    width: 20px;
+    height: 20px;
 }
