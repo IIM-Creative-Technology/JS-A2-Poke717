@@ -17,17 +17,6 @@
                 <label for="type">Type</label>
                 <select name="type" id="type">
                     <option value="">Tous</option>
-                    <option value="fire">Feu</option>
-                    <option value="water">Eau</option>
-                    <option value="grass">Plante</option>
-                    <option value="steel">Acier</option>
-                    <option value="dragon">Dragon</option>
-                    <option value="electrik">Electrique</option>
-                    <option value="ice">Glace</option>
-                    <option value="fly">Vol</option>
-                    <option value="shadow">Ombre</option>
-                    <option value="psy">Psy</option>
-                    <option value="insect">Insecte</option>
                 </select>
             </div>
             <div class="select generation">
@@ -61,7 +50,7 @@
                     <option value="decroissant">Décroissant</option>
                 </select>
             </div>
-            <input type="submit" value="Valider">
+            <input type="submit" value="Valider" id="submit">
         </form>
     </div>
 
@@ -78,5 +67,9 @@
     </form>
 
     <script src="script.js"></script>
+    <script>
+        getType();
+        getAllType();
+    </script>
 </body>
 </html>

@@ -141,3 +141,34 @@ async function getTypePokemon() {
 }
 
 // getTypePokemon()
+
+
+const submit = document.querySelector('#submit');
+function getType(type){
+  fetch("https://pokeapi.co/api/v2/type/"+type)
+  .then(response => response.json())
+  .then(data => {
+    const firePokemon = data.pokemon;
+    console.log(firePokemon);
+  })
+  .catch(error => console.log(error));
+}
+submit.addEventListener('click', (e)=>{
+  e.preventDefault();
+  const typeSelect = document.querySelector("#type");
+  getType(typeSelect.value)
+})
+
+const select = document.querySelector('#type');
+
+function getAllType(){
+  fetch('https://pokeapi.co/api/v2/type')
+  .then(response => response.json())
+  .then(data => {
+    const types = data.results;
+    types.forEach(element => {
+      select.options[select.length] = new Option(element.name, element.name, true, true); 
+    });
+  })
+  .catch(error => console.error(error));
+}
