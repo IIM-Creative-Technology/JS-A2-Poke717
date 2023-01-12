@@ -230,7 +230,9 @@ function getType(type){
 submit.addEventListener('click', (e)=>{
   e.preventDefault();
   const typeSelect = document.querySelector("#type");
+  const generationPoke = document.querySelector('#generation');
   getType(typeSelect.value)
+  getGeneration(generationPoke.value)
 })
 
 const select = document.querySelector('#type');
@@ -245,4 +247,28 @@ function getAllType(){
     });
   })
   .catch(error => console.error(error));
+}
+
+const generation = document.querySelector('#generation');
+
+function getAllGeneration(){
+  fetch('https://pokeapi.co/api/v2/generation')
+  .then(response => response.json())
+  .then(data => {
+    const generations = data.results;
+    generations.forEach(element => {
+      generation.options[generation.length] = new Option(element.name,(generation.length+1),  true, true); 
+    });
+  })
+  .catch(error => console.error(error));
+}
+
+function getGeneration(generation){
+  fetch("https://pokeapi.co/api/v2/generation/"+generation)
+  .then(response => response.json())
+  .then(data => {
+    const gen = data.pokemon_species;
+    console.log(gen);
+  })
+  .catch(error => console.log(error));
 }
