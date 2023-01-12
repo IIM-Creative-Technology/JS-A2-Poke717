@@ -5,8 +5,7 @@ const TYPE_URL = "10";
 const poke_container = document.getElementById("poke_container");
 const poke_container1 = document.getElementById("poke_container1");
 const pokemons_number = 30;
-const pokemons_first = 151; // fixe le nombre de pokemon maximun a afficher
-// permet de faire une itération pour que les pokemon soit afficher de 1 jusqu'au nombre choisi
+const pokemons_first = 151; 
 const fetchPokemons = async () => {
   for (let i = 1; i <= pokemons_number; i++) {
     await getPokemon(i);
@@ -14,20 +13,10 @@ const fetchPokemons = async () => {
 };
 
 const getPokemon = async (id) => {
-  // async sert faire charger plusieur chose en meme temps
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
   const pokemon = await res.json();
-  createPokemonCard(pokemon); // apelle la fonction qui va crée les différante cart pokemon
-  createPokemonCardShy(pokemon);
-};
-
-const getTypedPokemon = async (link) => {
-  // async sert faire charger plusieur chose en meme temps
-  const url = `${link}`;
-  const res = await fetch(url);
-  const pokemon = await res.json();
-  createPokemonCard(pokemon); // apelle la fonction qui va crée les différante cart pokemon
+  createPokemonCard(pokemon);
   createPokemonCardShy(pokemon);
 };
 
@@ -101,8 +90,14 @@ function white() {
   element.classList.remove("shy");
 }
 
+function makeAnim() {
+  var element = document.getElementById("rec");
+  element.classList.add("anim");
+}
+
 document.addEventListener("keyup", (event) => {
   if (event.code === "Space") {
+    makeAnim();
     dark();
     white();
     change();
@@ -130,18 +125,97 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-async function getTypePokemon() {
-  const response = await fetch("https://pokeapi.co/api/v2/type/"+TYPE_URL);
-  const data = await response.json();
+// A FAIRE ---------------------------------------------------------------------------------------
 
-  data.pokemon.forEach((pokemon) => {
-    const link = pokemon.pokemon.url;
-    getTypedPokemon(link);
-  });
-}
+// async function getTypePokemon() {
+//   const response = await fetch("https://pokeapi.co/api/v2/type/"+TYPE_URL);
+//   const data = await response.json();
 
-// getTypePokemon()
+//   data.pokemon.forEach((pokemon) => {
+//     const link = pokemon.pokemon.url;
+//     console.log(link);
+//   });
+// }
 
+
+// const main = document.getElementById("poke_container");
+
+// const getPokemonWithURL = async (link) => {
+  // console.log(link);
+//   const url = `${link}`;
+//   const res = await fetch(url);
+//   const pokemon = await res.json();
+//   createPokemonCard(pokemon);
+//   createPokemonCardShy(pokemon);
+// };
+
+// function getPokemons(url) {
+//   fetch(url)
+//     .then((res) => res.json())
+//     .then((data) => {
+//       const PokemonsList = data.pokemon
+//       PokemonsList.forEach(pokemon => {
+//         console.log(pokemon.url)
+//         const pokemonEL = document.createElement("div"); 
+//         pokemonEL.setAttribute("id", "pokemon");
+//         getPokemonWithURL(pokemon.url)
+
+
+
+// AFTER ---------------------------------------------------------------
+
+        // const { id, name, sprites } = pokemon;
+        // const type = types[0].type.name;
+        // if (types.length == 1) {
+        //   const pokeInnerHTML = ` 
+        //       <div class="img_single_pokemon">
+        //           <img src="${sprites.front_default}" alt="${name}"/>
+        //       </div>
+        //       <div class="single_info">
+        //           <p class="single_number">
+        //               ${id}
+        //           </p>
+        //           <h2 class="single_name">
+        //               ${name}
+        //           </h2>
+        //           <p class="single_type">
+        //               Type: <span class="${types[0].type.name}">${type}</span>
+        //           </p >
+        //       </div>
+        //   </div>`;
+        //   pokemonEL.innerHTML = pokeInnerHTML;
+        //   main.appendChild(pokemonEL);
+        // } 
+
+        // else if (types.length == 2) {
+        //   const pokeInnerHTMTwoType = ` 
+        //       <div class="img_single_pokemon">
+        //           <img src="${sprites.front_default}" alt="${name}"/>
+        //       </div>
+        //       <div class="single_info">
+        //           <p class="single_number">
+        //               number in pokedex : ${id}
+        //           </p>
+        //           <h2 class="single_name">
+        //               ${name}
+        //           </h2>
+        //           <p class="single_type">
+        //               Type: <span class="${types[0].type.name}">${types[0].type.name}</span> 
+        //               <span class="${types[1].type.name}">${types[1].type.name}</span>
+        //           </p >
+        //       </div>
+        //   </div>`;
+        //   pokemonEL.innerHTML = pokeInnerHTMTwoType;
+        //   main.appendChild(pokemonEL);
+        // }
+
+// BEFORE --------------------------------------------------------------------------------------
+
+
+  //     })
+  //   })
+  // };
+// ----------------------------------------------------------------------------------------------
 
 const submit = document.querySelector('#submit');
 function getType(type){
