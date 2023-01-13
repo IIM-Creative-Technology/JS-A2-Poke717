@@ -223,10 +223,6 @@ const getPokemonWithURL = async (link) => {
 
 const submit = document.querySelector('#submit');
 function getType(type){
-  if (type == "") {
-    fetchPokemons()
-  }
-
   const pokecontainer = document.getElementById('poke_container')
   const limit = pokecontainer.childElementCount;
   for (let i = 1; i <= limit; i++) {
@@ -304,14 +300,17 @@ function getGeneration(generation){
     const childcontainer = document.getElementById('pokemon')
     pokecontainer.removeChild(childcontainer)
   }
+  const pokecontainer1 = document.getElementById('poke_container1')
+  for (let i = 1; i <= limit; i++) {
+    const childcontainer = document.getElementById('pokemon')
+    pokecontainer1.removeChild(childcontainer)
+  }
   fetch("https://pokeapi.co/api/v2/generation/"+generation)
   .then(response => response.json())
   .then(data => {
     const GenPokemon = data.pokemon_species;
-    console.log(GenPokemon)
     GenPokemon.forEach(pokemon => {
       const url = pokemon.url.replace('-species/', '/');
-      console.log(url)
       getPokemonWithURL(url)
     })
   })
