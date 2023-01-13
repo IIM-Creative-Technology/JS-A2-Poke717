@@ -4,8 +4,8 @@ const SORT_URL = "";
 const TYPE_URL = "10";
 const poke_container = document.getElementById("poke_container");
 const poke_container1 = document.getElementById("poke_container1");
-const pokemons_number = 30;
-const pokemons_first = 151;
+const pokemons_number = 40;
+const pokemons_first = 151; 
 const fetchPokemons = async () => {
   for (let i = 1; i <= pokemons_number; i++) {
     await getPokemon(i);
@@ -47,6 +47,8 @@ const createPokemonCard = (pokemon) => {
   pokemonEL.innerHTML = pokeInnerHTML;
   poke_container.appendChild(pokemonEL);
 };
+
+
 
 const createPokemonCardShy = (pokemon) => {
   const pokemonEL = document.createElement("div"); // creation de div cette div va etre notre card
@@ -316,9 +318,11 @@ function getGeneration(generation){
   .catch(error => console.log(error));
 }
 
-const card = document.getElementsByClassName('img_single_pokemon');
-document.addEventListener("scroll", function() {
-  card.classList.add('shake');
-  console.log("shake");  
-});
-
+// const card = document.getElementsByClassName('img_single_pokemon');
+// document.addEventListener("scroll", function() {
+  
+//   card.classList.add('shake');
+//   console.log("shake");
+  
+  
+// });
