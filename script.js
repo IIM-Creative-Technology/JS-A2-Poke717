@@ -166,7 +166,7 @@ submit.addEventListener('click', (e)=>{
     if (Order.value === "decroissant") {
       setTimeout(() => {
         reverse();
-      }, "500")
+      }, "1000")
     }
   }
   else if (typeSelect.value !== "" && generationPoke.value === "") {
@@ -175,7 +175,7 @@ submit.addEventListener('click', (e)=>{
     if (Order.value === "decroissant") {
       setTimeout(() => {
         reverse();
-      }, "500")
+      }, "1000")
     }
   }
   else if (typeSelect.value === "" && generationPoke.value !== "") {
@@ -184,7 +184,7 @@ submit.addEventListener('click', (e)=>{
     if (Order.value === "decroissant") {
       setTimeout(() => {
         reverse();
-      }, "500")
+      }, "1000")
     }
   }
   // else if (typeSelect.value !== "" && generationPoke.value !== "") {
