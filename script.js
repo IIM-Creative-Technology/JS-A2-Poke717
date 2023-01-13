@@ -6,6 +6,7 @@ const poke_container = document.getElementById("poke_container");
 const poke_container1 = document.getElementById("poke_container1");
 const pokemons_number = 30;
 const pokemons_first = 151; 
+const test = [];
 const fetchPokemons = async () => {
   for (let i = 1; i <= pokemons_number; i++) {
     await getPokemon(i);
@@ -16,9 +17,12 @@ const getPokemon = async (id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
   const pokemon = await res.json();
+  test.push(pokemon);
   createPokemonCard(pokemon);
   createPokemonCardShy(pokemon);
 };
+
+console.log(test);
 
 // creation de carte pokemon
 const createPokemonCard = (pokemon) => {
@@ -113,7 +117,6 @@ document.addEventListener("keydown", function (event) {
       }
     };
     console.log("jjj");
-
     fetchPokemons();
   }
 });
