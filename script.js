@@ -4,8 +4,8 @@ const SORT_URL = "";
 const TYPE_URL = "10";
 const poke_container = document.getElementById("poke_container");
 const poke_container1 = document.getElementById("poke_container1");
-const pokemons_number = 40;
-const pokemons_first = 151; 
+const pokemons_number = 30;
+const pokemons_first = 151;
 const test = [];
 const fetchPokemons = async () => {
   for (let i = 1; i <= pokemons_number; i++) {
