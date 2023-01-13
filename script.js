@@ -25,6 +25,7 @@ const getPokemon = async (id) => {
 const createPokemonCard = (pokemon) => {
   const pokemonEL = document.createElement("div"); // creation de div cette div va etre notre card
   pokemonEL.setAttribute("id", "pokemon");
+  pokemonEL.classList.add("pokdiv");
   const { id, name, sprites, types } = pokemon; // on defini la constante pokemon
   const type = types[0].type.name;
 
@@ -53,6 +54,7 @@ const createPokemonCard = (pokemon) => {
 const createPokemonCardShy = (pokemon) => {
   const pokemonEL = document.createElement("div"); // creation de div cette div va etre notre card
   pokemonEL.setAttribute("id", "pokemon");
+  pokemonEL.classList.add("pokdiv");
   const { id, name, sprites, types } = pokemon; // on defini la constante pokemon
   const type = types[0].type.name;
 
@@ -121,98 +123,6 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-// A FAIRE ---------------------------------------------------------------------------------------
-
-// async function getTypePokemon() {
-//   const response = await fetch("https://pokeapi.co/api/v2/type/"+TYPE_URL);
-//   const data = await response.json();
-
-//   data.pokemon.forEach((pokemon) => {
-//     const link = pokemon.pokemon.url;
-//     console.log(link);
-//   });
-// }
-
-
-// const main = document.getElementById("poke_container");
-
-// const getPokemonWithURL = async (link) => {
-  // console.log(link);
-//   const url = `${link}`;
-//   const res = await fetch(url);
-//   const pokemon = await res.json();
-//   createPokemonCard(pokemon);
-//   createPokemonCardShy(pokemon);
-// };
-
-// function getPokemons(url) {
-//   fetch(url)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       const PokemonsList = data.pokemon
-//       PokemonsList.forEach(pokemon => {
-//         console.log(pokemon.url)
-//         const pokemonEL = document.createElement("div"); 
-//         pokemonEL.setAttribute("id", "pokemon");
-//         getPokemonWithURL(pokemon.url)
-
-
-
-// AFTER ---------------------------------------------------------------
-
-        // const { id, name, sprites } = pokemon;
-        // const type = types[0].type.name;
-        // if (types.length == 1) {
-        //   const pokeInnerHTML = ` 
-        //       <div class="img_single_pokemon">
-        //           <img src="${sprites.front_default}" alt="${name}"/>
-        //       </div>
-        //       <div class="single_info">
-        //           <p class="single_number">
-        //               ${id}
-        //           </p>
-        //           <h2 class="single_name">
-        //               ${name}
-        //           </h2>
-        //           <p class="single_type">
-        //               Type: <span class="${types[0].type.name}">${type}</span>
-        //           </p >
-        //       </div>
-        //   </div>`;
-        //   pokemonEL.innerHTML = pokeInnerHTML;
-        //   main.appendChild(pokemonEL);
-        // } 
-
-        // else if (types.length == 2) {
-        //   const pokeInnerHTMTwoType = ` 
-        //       <div class="img_single_pokemon">
-        //           <img src="${sprites.front_default}" alt="${name}"/>
-        //       </div>
-        //       <div class="single_info">
-        //           <p class="single_number">
-        //               number in pokedex : ${id}
-        //           </p>
-        //           <h2 class="single_name">
-        //               ${name}
-        //           </h2>
-        //           <p class="single_type">
-        //               Type: <span class="${types[0].type.name}">${types[0].type.name}</span> 
-        //               <span class="${types[1].type.name}">${types[1].type.name}</span>
-        //           </p >
-        //       </div>
-        //   </div>`;
-        //   pokemonEL.innerHTML = pokeInnerHTMTwoType;
-        //   main.appendChild(pokemonEL);
-        // }
-
-// BEFORE --------------------------------------------------------------------------------------
-
-
-  //     })
-  //   })
-  // };
-// ----------------------------------------------------------------------------------------------
-
 const getPokemonWithURL = async (link) => {
     const url = link;
     const res = await fetch(url);
@@ -223,6 +133,20 @@ const getPokemonWithURL = async (link) => {
 
 const submit = document.querySelector('#submit');
 function getType(type){
+  fetch("https://pokeapi.co/api/v2/type/"+type)
+  .then(response => response.json())
+  .then(data => {
+    const TypePokemon = data.pokemon;
+    TypePokemon.forEach(pokemon => {
+      getPokemonWithURL(pokemon.pokemon.url)
+    })
+  })
+  .catch(error => console.log(error));
+}
+
+const Order = document.querySelector('#pokedex');
+submit.addEventListener('click', (e)=>{
+  e.preventDefault();
   const pokecontainer = document.getElementById('poke_container')
   const limit = pokecontainer.childElementCount;
   for (let i = 1; i <= limit; i++) {
@@ -234,34 +158,38 @@ function getType(type){
     const childcontainer = document.getElementById('pokemon')
     pokecontainer1.removeChild(childcontainer)
   }
-  fetch("https://pokeapi.co/api/v2/type/"+type)
-  .then(response => response.json())
-  .then(data => {
-    const TypePokemon = data.pokemon;
-    TypePokemon.forEach(pokemon => {
-      getPokemonWithURL(pokemon.pokemon.url)
-    })
-  })
-  .catch(error => console.log(error));
-}
-submit.addEventListener('click', (e)=>{
-  e.preventDefault();
   const typeSelect = document.querySelector("#type");
   const generationPoke = document.querySelector('#generation');
   if (typeSelect.value === "" && generationPoke.value === "") {
     document.getElementById('errorfilter').classList.add("hidden");
     fetchPokemons()
-  }
-  else if (typeSelect.value !== "" && generationPoke.value !== "") {
-    document.getElementById('errorfilter').classList.remove("hidden");
+    if (Order.value === "decroissant") {
+      setTimeout(() => {
+        reverse();
+      }, "500")
+    }
   }
   else if (typeSelect.value !== "" && generationPoke.value === "") {
     getType(typeSelect.value)
     document.getElementById('errorfilter').classList.add("hidden");
+    if (Order.value === "decroissant") {
+      setTimeout(() => {
+        reverse();
+      }, "500")
+    }
   }
   else if (typeSelect.value === "" && generationPoke.value !== "") {
     getGeneration(generationPoke.value)
     document.getElementById('errorfilter').classList.add("hidden");
+    if (Order.value === "decroissant") {
+      setTimeout(() => {
+        reverse();
+      }, "500")
+    }
+  }
+  // else if (typeSelect.value !== "" && generationPoke.value !== "") {
+  else {
+    document.getElementById('errorfilter').classList.remove("hidden");
   }
 })
 
@@ -294,17 +222,6 @@ function getAllGeneration(){
 }
 
 function getGeneration(generation){
-  const pokecontainer = document.getElementById('poke_container')
-  const limit = pokecontainer.childElementCount;
-  for (let i = 1; i <= limit; i++) {
-    const childcontainer = document.getElementById('pokemon')
-    pokecontainer.removeChild(childcontainer)
-  }
-  const pokecontainer1 = document.getElementById('poke_container1')
-  for (let i = 1; i <= limit; i++) {
-    const childcontainer = document.getElementById('pokemon')
-    pokecontainer1.removeChild(childcontainer)
-  }
   fetch("https://pokeapi.co/api/v2/generation/"+generation)
   .then(response => response.json())
   .then(data => {
@@ -317,11 +234,10 @@ function getGeneration(generation){
   .catch(error => console.log(error));
 }
 
-// const card = document.getElementsByClassName('img_single_pokemon');
-// document.addEventListener("scroll", function() {
-  
-//   card.classList.add('shake');
-//   console.log("shake");
-  
-  
-// });
+function reverse() {
+  var divs = poke_container.getElementsByClassName("pokdiv");
+  var reversedDivs = [].slice.call(divs).reverse();
+  for (var i = 0; i < reversedDivs.length; i++) {
+    poke_container.appendChild(reversedDivs[i]);
+  }
+}
