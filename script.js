@@ -4,7 +4,7 @@ const SORT_URL = "";
 const TYPE_URL = "10";
 const poke_container = document.getElementById("poke_container");
 const poke_container1 = document.getElementById("poke_container1");
-const pokemons_number = 30;
+const pokemons_number = 40;
 const pokemons_first = 151; 
 const test = [];
 const fetchPokemons = async () => {
@@ -94,14 +94,8 @@ function white() {
   element.classList.remove("shy");
 }
 
-function makeAnim() {
-  var element = document.getElementById("rec");
-  element.classList.add("anim");
-}
-
 document.addEventListener("keyup", (event) => {
   if (event.code === "Space") {
-    makeAnim();
     dark();
     white();
     change();
@@ -220,13 +214,29 @@ document.addEventListener("keydown", function (event) {
   // };
 // ----------------------------------------------------------------------------------------------
 
+const getPokemonWithURL = async (link) => {
+    const url = link;
+    const res = await fetch(url);
+    const pokemon = await res.json();
+    createPokemonCard(pokemon);
+    createPokemonCardShy(pokemon);
+};
+
 const submit = document.querySelector('#submit');
 function getType(type){
+  const pokecontainer = document.getElementById('poke_container')
+  const limit = pokecontainer.childElementCount;
+  for (let i = 1; i <= limit; i++) {
+    const childcontainer = document.getElementById('pokemon')
+    pokecontainer.removeChild(childcontainer)
+  }
   fetch("https://pokeapi.co/api/v2/type/"+type)
   .then(response => response.json())
   .then(data => {
-    const firePokemon = data.pokemon;
-    console.log(firePokemon);
+    const TypePokemon = data.pokemon;
+    TypePokemon.forEach(pokemon => {
+      getPokemonWithURL(pokemon.pokemon.url)
+    })
   })
   .catch(error => console.log(error));
 }
