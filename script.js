@@ -285,3 +285,13 @@ function getGeneration(generation){
   })
   .catch(error => console.log(error));
 }
+
+const card = document.getElementsByClassName('img_single_pokemon');
+document.addEventListener("scroll", function() {
+  
+  card.classList.add('shake');
+  console.log("shake");
+  
+  
+});
+

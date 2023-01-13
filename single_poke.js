@@ -109,3 +109,13 @@ function getPage(pageId) {
       });
   }
 }
+
+
+const card = document.getElementsByClassName('img_single_pokemon');
+document.addEventListener("scroll", function() {
+  
+  card.classList.add('shake');
+  console.log("shake");
+  
+  
+});
