@@ -1,3 +1,11 @@
+const audio = document.getElementById("my-audio");
+const button = document.getElementById("button_quizz");
+
+button.addEventListener("click", function() {
+    audio.play();
+    console.log("sound")
+});
+
 function generateRandomNumber() {
   return Math.floor(Math.random() * 6) + 1;
 }
@@ -46,8 +54,14 @@ function getPoke(url) {
                 `;
             pokemonEL.innerHTML = reponse_poke;
             valide.appendChild(pokemonEL);
+            button.addEventListener("click", function() {
+              audio.play();
+              console.log("sound")
+          });
           } else {
             const pokemonEL = document.createElement("div");
+            const reponses = document.getElementById("reponse");
+            reponses.classList.remove("quizz-img");
             pokemonEL.classList.add("reponse");
             const reponse_poke = `
                 <h3> Mauvaise reponse </h3>
@@ -59,3 +73,4 @@ function getPoke(url) {
       }
     });
 }
+
