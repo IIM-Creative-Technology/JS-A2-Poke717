@@ -79,10 +79,7 @@ const createPokemonCardShy = (pokemon) => {
 
 fetchPokemons();
 
-function dark() {
-  var element = document.getElementById("poke_container");
-  element.remove();
-}
+
 function change() {
   var element = document.body;
   element.style.background = "linear-gradient(to right, #D4D3DD, #4b6043)";
@@ -90,15 +87,39 @@ function change() {
 
 function white() {
   var element = document.getElementById("poke_container1");
+  var element1 = document.getElementById("poke_container");
 
   element.classList.remove("shy");
+  element1.classList.add("shy");
 }
 
-document.addEventListener("keyup", (event) => {
-  if (event.code === "Space") {
-    dark();
+
+function change1() {
+  var element = document.body;
+  element.style.background = "linear-gradient(to right, #D4D3DD, #ffc600)";
+}
+
+function white1() {
+  var element = document.getElementById("poke_container1");
+  var element1 = document.getElementById("poke_container");
+
+  element.classList.add("shy");
+  element1.classList.remove("shy");
+}
+
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "c") {
+   
     white();
     change();
+  }
+});
+document.addEventListener("keyup", (event) => {
+  if (event.key === "c") {
+
+    white1();
+    change1();
   }
 });
 
