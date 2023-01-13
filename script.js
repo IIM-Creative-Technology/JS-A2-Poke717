@@ -6,7 +6,6 @@ const poke_container = document.getElementById("poke_container");
 const poke_container1 = document.getElementById("poke_container1");
 const pokemons_number = 30;
 const pokemons_first = 151;
-const test = [];
 const fetchPokemons = async () => {
   for (let i = 1; i <= pokemons_number; i++) {
     await getPokemon(i);
@@ -17,12 +16,10 @@ const getPokemon = async (id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
   const pokemon = await res.json();
-  test.push(pokemon);
   createPokemonCard(pokemon);
   createPokemonCardShy(pokemon);
 };
 
-console.log(test);
 
 // creation de carte pokemon
 const createPokemonCard = (pokemon) => {
@@ -224,11 +221,20 @@ const getPokemonWithURL = async (link) => {
 
 const submit = document.querySelector('#submit');
 function getType(type){
+  if (type == "") {
+    fetchPokemons()
+  }
+
   const pokecontainer = document.getElementById('poke_container')
   const limit = pokecontainer.childElementCount;
   for (let i = 1; i <= limit; i++) {
     const childcontainer = document.getElementById('pokemon')
     pokecontainer.removeChild(childcontainer)
+  }
+  const pokecontainer1 = document.getElementById('poke_container1')
+  for (let i = 1; i <= limit; i++) {
+    const childcontainer = document.getElementById('pokemon')
+    pokecontainer1.removeChild(childcontainer)
   }
   fetch("https://pokeapi.co/api/v2/type/"+type)
   .then(response => response.json())
@@ -244,8 +250,21 @@ submit.addEventListener('click', (e)=>{
   e.preventDefault();
   const typeSelect = document.querySelector("#type");
   const generationPoke = document.querySelector('#generation');
-  getType(typeSelect.value)
-  getGeneration(generationPoke.value)
+  if (typeSelect.value === "" && generationPoke.value === "") {
+    document.getElementById('errorfilter').classList.add("hidden");
+    fetchPokemons()
+  }
+  else if (typeSelect.value !== "" && generationPoke.value !== "") {
+    document.getElementById('errorfilter').classList.remove("hidden");
+  }
+  else if (typeSelect.value !== "" && generationPoke.value === "") {
+    getType(typeSelect.value)
+    document.getElementById('errorfilter').classList.add("hidden");
+  }
+  else if (typeSelect.value === "" && generationPoke.value !== "") {
+    getGeneration(generationPoke.value)
+    document.getElementById('errorfilter').classList.add("hidden");
+  }
 })
 
 const select = document.querySelector('#type');
@@ -270,28 +289,36 @@ function getAllGeneration(){
   .then(data => {
     const generations = data.results;
     generations.forEach(element => {
-      generation.options[generation.length] = new Option(element.name,(generation.length+1),  true, true); 
+      generation.options[generation.length] = new Option(element.name,(generation.length),  true, true); 
     });
   })
   .catch(error => console.error(error));
 }
 
 function getGeneration(generation){
+  const pokecontainer = document.getElementById('poke_container')
+  const limit = pokecontainer.childElementCount;
+  for (let i = 1; i <= limit; i++) {
+    const childcontainer = document.getElementById('pokemon')
+    pokecontainer.removeChild(childcontainer)
+  }
   fetch("https://pokeapi.co/api/v2/generation/"+generation)
   .then(response => response.json())
   .then(data => {
-    const gen = data.pokemon_species;
-    console.log(gen);
+    const GenPokemon = data.pokemon_species;
+    console.log(GenPokemon)
+    GenPokemon.forEach(pokemon => {
+      const url = pokemon.url.replace('-species/', '/');
+      console.log(url)
+      getPokemonWithURL(url)
+    })
   })
   .catch(error => console.log(error));
 }
 
 const card = document.getElementsByClassName('img_single_pokemon');
 document.addEventListener("scroll", function() {
-  
   card.classList.add('shake');
-  console.log("shake");
-  
-  
+  console.log("shake");  
 });
 
