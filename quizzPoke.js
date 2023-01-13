@@ -1,9 +1,9 @@
 const audio = document.getElementById("my-audio");
 const button = document.getElementById("button_quizz");
 
-button.addEventListener("click", function() {
-    audio.play();
-    console.log("sound")
+button.addEventListener("click", function () {
+  audio.play();
+  console.log("sound");
 });
 
 function generateRandomNumber() {
@@ -29,11 +29,9 @@ function getPoke(url) {
       console.log(data);
       singlePoke(data);
       function singlePoke(data) {
-        const pokemonEL = document.createElement("div"); // creation de div cette div va etre notre card
+        const pokemonEL = document.createElement("div");
         pokemonEL.classList.add("quizzPokemon");
-        const { id, name, sprites, types, height, weight, stats } = data; // on defini la constante pokemon
-        const type = types[0].type.name;
-        // cretion d'un élement html qui va etre modifier et génerer par le js
+        const { name, sprites } = data;
         const pokeInnerHTML = `
             <div class="img_single_pokemon">
                 <img id="reponse" class="quizz-img" src="${sprites.front_default}" alt="${name}"/>
@@ -54,14 +52,13 @@ function getPoke(url) {
                 `;
             pokemonEL.innerHTML = reponse_poke;
             valide.appendChild(pokemonEL);
-            button.addEventListener("click", function() {
+            button.addEventListener("click", function () {
               audio.play();
-              console.log("sound")
-          });
+              console.log("sound");
+            });
           } else {
             const pokemonEL = document.createElement("div");
             const reponses = document.getElementById("reponse");
-            reponses.classList.remove("quizz-img");
             pokemonEL.classList.add("reponse");
             const reponse_poke = `
                 <h3> Mauvaise reponse </h3>
@@ -73,4 +70,3 @@ function getPoke(url) {
       }
     });
 }
-

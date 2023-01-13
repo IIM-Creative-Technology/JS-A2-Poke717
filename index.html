@@ -10,8 +10,15 @@
 </head>
 <body>
     <img src="pokemon-logo-black-transparent.png" alt="logo" class="logo">
-    <a class="button_quizz" href="quizz.html">Quizz pokemon</a>
-    <div class="c-tri">
+    <div class="button_home">
+        <a class="button_quizz" href="quizz.html">Quizz pokemon</a>
+        <div>
+            <button  id="button_music" class="button_quizz" >Musique aleatoire</button>
+            <button id="button_pause" class="button_quizz">Pause</button>
+            <button id="button_replay" class="button_quizz">Replay</button>
+        </div>
+    </div>
+    <div class="c-tri" id="tri">
         <form action="" method="get">
             <div class="select type">
                 <label for="type">Type</label>
@@ -22,6 +29,7 @@
             <div class="select generation">
                 <label for="generation">Génération</label>
                 <select name="generation" id="generation">
+                    <option value="">Toutes</option>
                 </select>
             </div>
             <div class="select pokedex">
@@ -33,6 +41,7 @@
             </div>
             <input type="submit" value="Valider" id="submit">
         </form>
+        <h1 id='errorfilter' class="hidden">Vous ne pouvez pas Sélectionner ces deux filtres ensemble</h1>
     </div>
 
     <div id="poke_container" class="poke-container">
@@ -43,10 +52,9 @@
 
     </div>
 
-    <form action="">
-        <input type="text" defalutvalue="10">
-    </form>
     <script src="script.js"></script>
+    <script src="son.js"></script>
+    <script src="canvas.js"></script>
     <script>
         
         getAllType();
