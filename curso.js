@@ -12,9 +12,9 @@ function getPage(pageId) {
   const API_URL = `https://pokeapi.co/api/v2/pokemon/${pageId}`;
   console.log(API_URL);
   getPoke(API_URL);
-  
+
   const main = document.getElementById("single_poke");
-  
+
   function getPoke(url) {
     fetch(url)
       .then((res) => res.json())
@@ -152,7 +152,6 @@ function getPage(pageId) {
             };
           }
         }
-      }
-    });
+      });
   }
 }
