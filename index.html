@@ -10,7 +10,14 @@
 </head>
 <body>
     <img src="pokemon-logo-black-transparent.png" alt="logo" class="logo">
-    <a class="button_quizz" href="quizz.html">Quizz pokemon</a>
+    <div class="button_home">
+        <a class="button_quizz" href="quizz.html">Quizz pokemon</a>
+        <div>
+            <button  id="button_music" class="button_quizz" >Musique aleatoire</button>
+            <button id="button_pause" class="button_quizz">Pause</button>
+            <button id="button_replay" class="button_quizz">Replay</button>
+        </div>
+    </div>
     <div class="c-tri">
         <form action="" method="get">
             <div class="select type">
@@ -47,6 +54,7 @@
         <input type="text" defalutvalue="10">
     </form>
     <script src="script.js"></script>
+    <script src="son.js"></script>
     <script>
         
         getAllType();
