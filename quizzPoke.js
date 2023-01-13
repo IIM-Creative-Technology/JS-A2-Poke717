@@ -7,7 +7,7 @@ button.addEventListener("click", function () {
 });
 
 function generateRandomNumber() {
-  return Math.floor(Math.random() * 6) + 1;
+  return Math.floor(Math.random() * 150) + 1;
 }
 const randomNumber = generateRandomNumber();
 console.log(randomNumber);

@@ -281,9 +281,9 @@ h1{
     80% { transform: translate(-1px, -1px) rotate(1deg); }
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
+}
 
-  .poke-container.shake {
+.poke-container.shake {
     animation-iteration-count: 1;
 }
 
@@ -301,3 +301,13 @@ h1{
     opacity: 1;
 }
 
+form{
+    margin-top: 25px;
+}
+
+.next{
+    text-decoration: underline;
+    font-size: 15px;
+    color: white;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black, 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
